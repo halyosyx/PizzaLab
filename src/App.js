@@ -9,8 +9,11 @@ function App() {
   return (
     <div>
       <Header />
-      <PizzaPreview />
-      <ToppingMenu />
+      <div className="pizzaBuilder">
+        <h1>SELECT THE INGREDIENTS FOR YOUR PIZZA</h1>
+        <PizzaPreview />
+        <ToppingMenu />
+      </div>
     </div>
   );
 }

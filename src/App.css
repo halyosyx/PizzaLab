@@ -1,3 +1,23 @@
 body {
   background-color: #6100FF;
 }
+
+.pizzaBuilder {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  /* border: 1px solid #fff; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h1 {
+  width: 100%;
+  color: #fff;
+  font-weight: 200;
+  font-size: 3em;
+  letter-spacing: 2px;
+  text-align: center;
+
+}
