@@ -1,9 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header'
+import PizzaPreview from './Components/PizzaPreview'
+import ToppingMenu from './Components/ToppingMenu'
+
+
 function App() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <PizzaPreview />
+      <ToppingMenu />
+    </div>
   );
 }
 
