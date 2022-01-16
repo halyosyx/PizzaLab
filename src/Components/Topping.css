@@ -1,0 +1,46 @@
+.Topping {
+  width: 100%;
+  /* border: red 2px solid; */
+  position: relative;
+  padding: 5px white solid;
+  /* margin-in: 5px; */
+}
+
+.Topping_text {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  /* border: 1px solid green; */
+  width: 100%;
+
+  position: absolute;
+    top: 0;
+    left: 0;
+
+  
+}
+
+.Topping h2 {
+  width: 100%;
+  color: white;
+  /* border: 1px solid teal; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0px;
+}
+
+.Topping h4 {
+
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0px;
+
+}
+
+.Topping img {
+  width: 100%;
+}
