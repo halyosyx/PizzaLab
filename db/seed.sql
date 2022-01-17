@@ -1,6 +1,6 @@
 -- Users table seeds here (Example)
-INSERT INTO users (name, email, phone) 
-VALUES ('Alice', 'alice@gmail.com','412-323-4567');
+INSERT INTO users (name, email, phone, created_on) 
+VALUES ('Alice', 'alice@gmail.com','412-323-4567', 'now');
 
 
 
