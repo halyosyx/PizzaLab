@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header'
-import PizzaPreview from './Components/PizzaPreview'
-import ToppingMenu from './Components/ToppingMenu'
-import Body from './RandomPage/Body'
-
+import Header from './Components/Header';
+import CustomPage from './Components/CustomePage';
+import RandomPage from './RandomPage/RandomPage';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
@@ -15,7 +13,12 @@ function App() {
         <PizzaPreview />
         <ToppingMenu /> 
       </div>*/}
-      <Body />
+      <Router>
+        <Routes>
+          <Route path="/custompizza" element={<CustomPage />} />
+          <Route path="/randompizza" element={<RandomPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
