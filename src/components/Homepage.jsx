@@ -1,5 +1,6 @@
 import React from "react";
 import SelectButton from "./SelectButton";
+import './Homepage.scss';
 
 
 
@@ -8,7 +9,7 @@ export default function Homepage() {
     <div className="buttons">
       
       <SelectButton
-      primaryText="Create your own!?"
+      primaryText="Create your own!"
       secondaryText="Choose your topings"
       onClick=""
       image="https://i.ibb.co/W3qDgRG/Blank-Canvas.jpg"
