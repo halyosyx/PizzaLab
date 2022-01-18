@@ -1,3 +1,5 @@
+import React from "react";
+import Homepage from "./components/Homepage";
 import './App.css';
 import Header from './Components/Header';
 import CustomPage from './Components/CustomePage';
@@ -15,6 +17,7 @@ function App() {
       </div>*/}
       <Router>
         <Routes>
+          <Route path="/" element={<Homepage />} />
           <Route path="/custompizza" element={<CustomPage />} />
           <Route path="/randompizza" element={<RandomPage />} />
         </Routes>
@@ -22,5 +25,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

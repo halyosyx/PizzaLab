@@ -1,0 +1,52 @@
+.selectButton {
+  height: 200px;
+  width: 200px;
+  background-color: rgb(221, 212, 212);
+  border: 2px solid black;
+  // border-radius: 25px;
+  margin: 20px;
+  position: relative;
+  img {
+
+  // position: relative;
+  width: 100%;
+  // border-radius: 25px;
+
+  }
+}
+
+.card__content{
+
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  
+  /* other styles (left, top, right, and padding) */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+
+}
+
+// // .selectButton img {
+// //   width: 100%;
+// //   border-radius: 25px;
+  
+// }
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+
+
+a {
+  color: white;
+  
+  
+
+}
+
+
+
