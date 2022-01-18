@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Topping.css"
 
+//this adds topping box to the container
 export default function Topping(props) {
  
   return (
