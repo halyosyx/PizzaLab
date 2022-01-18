@@ -9,13 +9,13 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 function App() {
   return (
     <div>
-      <Header />
       {/*<div className="pizzaBuilder">
         <h1>SELECT THE INGREDIENTS FOR YOUR PIZZA</h1>
         <PizzaPreview />
         <ToppingMenu /> 
       </div>*/}
       <Router>
+      <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/custompizza" element={<CustomPage />} />
