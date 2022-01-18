@@ -1,29 +1,48 @@
 .selectButton {
-  height: 200px;
-  width: 200px;
+  width: 45%;
+  max-height: 80vh;
+  // width: auto;
   background-color: rgb(221, 212, 212);
-  border: 2px solid black;
-  // border-radius: 25px;
   margin: 20px;
   position: relative;
+  overflow: hidden;
+  transition: all .4s ease-in-out;
+  &:hover{
+    width: 46%;
+  }
+
+
   img {
-
-  // position: relative;
-  width: 100%;
-  // border-radius: 25px;
-
+    width: 100%;
+    // width: auto;
   }
 }
 
 .card__content{
-
+  width: 100%;
   position: absolute;
   bottom: 0;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
   
-  /* other styles (left, top, right, and padding) */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  // border: 2px solid black;
 
+  /* other styles (left, top, right, and padding) */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  a { 
+  padding-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 2.5em;
+  text-align: center;
+  padding-top: 50px;
+
+  }
+  a:last-of-type {
+  padding-top: 0px;
+  margin-bottom: 30px;
+  font-size: 1em;
+  }
 }
 
 // // .selectButton img {
@@ -33,11 +52,6 @@
 // }
 
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 200px;
-}
 
 
 

@@ -1,0 +1,11 @@
+.buttons {
+
+  height: calc(100vh - (150px));  
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
+  // border: solid 2px red;
+
+}
