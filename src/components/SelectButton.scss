@@ -2,7 +2,7 @@
   width: 45%;
   max-height: 80vh;
   // width: auto;
-  background-color: rgb(221, 212, 212);
+  // background-color: rgb(221, 212, 212);
   margin: 20px;
   position: relative;
   overflow: hidden;
@@ -21,7 +21,7 @@
 .card__content{
   width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   display: flex;
   flex-direction: column;
   
@@ -36,30 +36,19 @@
   font-size: 2.5em;
   text-align: center;
   padding-top: 50px;
+    &:last-of-type {
+      padding-top: 0px;
+      margin-bottom: 30px;
+      font-size: 1em;
+    }
 
   }
-  a:last-of-type {
-  padding-top: 0px;
-  margin-bottom: 30px;
-  font-size: 1em;
-  }
+
 }
-
-// // .selectButton img {
-// //   width: 100%;
-// //   border-radius: 25px;
-  
-// }
-
-
-
-
 
 a {
   color: white;
   
-  
-
 }
 
 
