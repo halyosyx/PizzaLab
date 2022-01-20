@@ -30,13 +30,13 @@ const toppings = [
 
   },
   {
-    name: "Basil",
+    name: "Pineapple",
     price: 120,
     icon_url: "https://i.ibb.co/LSTcQNG/Pineapple-thumb.png",
     preview_url: "https://i.ibb.co/LSTcQNG/Pineapple-thumb.png"
   },
   {
-    name: "Cheese",
+    name: "Tomato",
     price: 120,
     icon_url: "https://i.ibb.co/b3Rcbnh/Tomato-thumb.png",
     preview_url: "https://i.ibb.co/8NHWbQ2/Tomato-Preview.png"
@@ -52,6 +52,7 @@ export default function ToppingMenu() {
     <div className="toppingsMenu">
       {toppings.map(topp => (
         <Topping 
+          key={topp.name} 
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}
