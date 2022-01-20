@@ -1,20 +1,35 @@
 const express = require('express');
+const client = require('./db');
 const router = express.Router();
 const app = express();
+const cors = require("cors");
 
 /* == ROUTES == */
+app.use(cors());
+app.use(express.json());
 
+//Generate random toppings
 
-//Handles back end server for data
-app.get('/users', (req, res) => {
-    const users = [
-        {id: 1, firstName: 'David', lastName: 'Lam'},
-        {id: 2, firstName: 'Dylan', lastName: 'Smith'},
-        {id: 3, firstName: 'Joe', lastName: 'Johnson'},
-    ];
+//Handles getting pizza sizes and price
+app.get('/pizzasizes', async (req, res) => {    
+    try {
+        const pizzaSizes = await client.query("SELECT * FROM pizza_sizes");
+        res.json(pizzaSizes.rows);
+        
+    } catch (err) {
+        console.error(err);
+    }
+});
 
-    res.json(users);
-
+//Handles getting the toppings
+app.get('/toppings', async (req, res) => {    
+    try {
+        const pizzaToppings = await client.query("SELECT * FROM toppings");
+        res.json(pizzaToppings.rows);
+        
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 const port = 5000;
