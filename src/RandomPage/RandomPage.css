@@ -2,3 +2,46 @@
     display: flex;
     justify-content: center;
 }
+
+.bottom{
+    position: relative;
+    top: 700px;
+    padding-bottom: 20px;
+}
+
+.base {
+    position: absolute;
+    z-index: 1;
+}
+.Cheese {
+    position: absolute;
+    z-index: 1;
+}
+.Mushroom {
+    position: absolute;
+    z-index: 2;
+}
+.Tomato {
+    position: absolute;
+    z-index: 3;
+}
+.Pineapple {
+    position: absolute;
+    z-index: 5;
+}
+.Pepperoni {
+    position: absolute;
+    z-index: 6;
+}
+.Basil {
+    position: absolute;
+    z-index: 7;
+}
+
+.topping_names {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    color: white;
+}
