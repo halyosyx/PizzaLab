@@ -16,13 +16,22 @@ export default function Buttons(props) {
   }, []);
 
   return (
-      <h1 className="title">
+      <section>
+        <div className="randomize">
+            <button onClick={() => window.location.reload(false)}>Randomize</button>
+        </div>
+        <h1 className="title">
           SELECT THE SIZE OF YOUR PIZZA
-      <section className="sizes">
+        </h1>
+        <section className="sizes">
           {sizes.map(size => (
             <button key={size.id}>{size.name} Pizza {size.price} </button>
           ))}
+        </section>
+        <div className="addtocart">
+            <button>Add to cart</button>
+        </div>
+      
       </section>
-      </h1>
   )
 }

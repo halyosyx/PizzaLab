@@ -1,8 +1,8 @@
 import React from "react";
 import Homepage from "./components/Homepage";
 import './App.css';
-import Header from './components/Header';
-import CustomPage from './components/CustomePage';
+import Header from './Components/Header';
+import CustomPage from './Components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 

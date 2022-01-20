@@ -7,6 +7,17 @@ button{
     color: white;
 }
 
+.randomize {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em ;
+}
+
+.addtocart {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em ;
+}
 
 .sizes{
     display: flex;
