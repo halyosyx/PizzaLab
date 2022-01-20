@@ -9,3 +9,10 @@
   height: auto;
 }
 
+.selected {
+  display: block;
+}
+
+.notselected {
+  display: none;
+}
