@@ -1,10 +1,15 @@
 import React from "react";
+require('dotenv').config()
 import Homepage from "./components/Homepage";
 import './App.css';
 import Header from './components/Header';
 import CustomPage from './components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+const axios = require('axios').default;
+
+
+
 
 function App() {
   return (
