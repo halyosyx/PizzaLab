@@ -1,7 +1,7 @@
-import React, {createContext} from 'react'
+import React, { useContext } from 'react'
 import Topping from './Topping'
 import './ToppingMenu.css'
-
+import OrderContext from './Order/Order';
 // const toppings = [
 //   {
 //     name: "Cheese",
@@ -50,6 +50,20 @@ import './ToppingMenu.css'
 export default function ToppingMenu({toppings, toppingToggler}) {
     console.log("in Button ♳", toppingToggler);
     let keys = Object.keys(toppingToggler)
+    let order = useContext(OrderContext);
+    console.log(order);
+    
+    function toggle(name) {
+
+    // let newToppings = {...toppingToggler}
+    // let newOrderDetails = JSON.parse(JSON.stringify(order));
+    // setToppingToggler(!toppingToggler.cheese)
+    order[name] = !order[name]
+    // setToppingToggler(newToppings);
+    console.log("🤬", order);
+
+  }
+
   return (
     <div className="toppingsMenu">
       {toppings.map(topp => (
@@ -62,8 +76,8 @@ export default function ToppingMenu({toppings, toppingToggler}) {
         />
 
       ))}
-      {keys.map(toggle => (
-        <button onClick={setToppingToggler(toggle)} >{toggle}</button>
+      {keys.map(name => (
+        <button  onClick={() => {toggle(name)} } >{name}</button>
       ))}
       
         
