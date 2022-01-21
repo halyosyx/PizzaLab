@@ -1,7 +1,8 @@
+import { jsxOpeningElement } from '@babel/types';
 import React, { useState, useEffect } from 'react'
 import PizzaPreview from './PizzaPreview'
 import ToppingMenu from './ToppingMenu'
-import axios from 'axios'
+//import axios from 'axios'
 
 
 
@@ -17,24 +18,30 @@ export default function CustomPage() {
   const [toppingToggler, setToppingToggler] = useState({});
 
   const getToppings = async () => {
-      const response = await axios.get("http://localhost:5000/toppings");
+      const response = await fetch("http://localhost:5000/toppings");
       const jsonData = await response.json();
 
-      setToppings(jsonData);
+      return jsonData;
 
       //Object to control toppings selected by user
-      let result = {}  
-      jsonData.forEach((topping) => {
-        result[topping.name] = false;
-      })
-      setToppingToggler(result)
+
+      //let result = {}  
+      //jsonData.forEach((topping) => {
+      //  result[topping.name] = false;
+      //})
+      //setToppingToggler(result)
   }
 
-  useEffect(() => {
-    getToppings();
+  useEffect( async ()  => {
+    const toppings = await getToppings();
+    setToppings(toppings);
   }, []);
 
+  function testFunction(name) {
 
+  }
+
+  console.log(toppings);
   
   // useState to toggle on and off each topping
   // needs to accept id or name of topping
