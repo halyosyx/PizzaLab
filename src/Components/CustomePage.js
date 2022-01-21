@@ -1,5 +1,5 @@
 import { jsxOpeningElement } from '@babel/types';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import PizzaPreview from './PizzaPreview'
 import ToppingMenu from './ToppingMenu'
 //import axios from 'axios'
@@ -34,11 +34,18 @@ export default function CustomPage() {
 
   useEffect( async ()  => {
     const toppings = await getToppings();
+    const toppingSelector = await toggleObjectCreator(toppings);
     setToppings(toppings);
+    setToppingToggler(toppingSelector)
+    console.log("in useEffect", toppingSelector);
   }, []);
 
-  function testFunction(name) {
-
+  function toggleObjectCreator(data) {
+      let result = {}  
+      data.forEach((topping) => {
+       result[topping.name] = false;
+      })
+      return result;
   }
 
   console.log(toppings);
@@ -71,13 +78,13 @@ export default function CustomPage() {
   return (
       <div>
       
-        <toppingSelector.Provider value={toppingToggler}>
+        <toppingSelector.Provider value={setToppingToggler}>
           {button}
           {/* Should display the image based on the state of toppings */}
           {/* we might have to add z-index of the topping as a style on the element -- maybe based on the id */}
           <PizzaPreview />
           {/* Should get list of topping available and generate buttons... interacting with toggle function */}
-          <ToppingMenu />
+          <ToppingMenu toppings={toppings} toppingToggler={toppingToggler} />
         </toppingSelector.Provider>
 
       </div>
