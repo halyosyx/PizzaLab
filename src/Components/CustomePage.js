@@ -86,7 +86,7 @@ export default function CustomPage() {
           {/* {button} */}
           {/* Should display the image based on the state of toppings */}
           {/* we might have to add z-index of the topping as a style on the element -- maybe based on the id */}
-          <PizzaPreview />
+          <PizzaPreview toppings={toppings}/>
           {/* Should get list of topping available and generate buttons... interacting with toggle function */}
           <ToppingMenu toppings={toppings} toppingToggler={toppingToggler} />
           </div>

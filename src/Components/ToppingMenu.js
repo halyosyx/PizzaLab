@@ -67,9 +67,10 @@ export default function ToppingMenu({toppings, toppingToggler}) {
   return (
     <div className="toppingsMenu">
       {toppings.map(topp => (
-      
+        
         <Topping 
           key={topp.name} 
+          onClick={() => toggle(topp.name)}
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}
@@ -77,7 +78,7 @@ export default function ToppingMenu({toppings, toppingToggler}) {
 
       ))}
       {keys.map(name => (
-        <button  onClick={() => {toggle(name)} } >{name}</button>
+        <button onClick={() => {toggle(name)}}>{name}</button>
       ))}
       
         
