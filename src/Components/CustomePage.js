@@ -1,10 +1,12 @@
-import { jsxOpeningElement } from '@babel/types';
+// import { jsxOpeningElement } from '@babel/types';
 import React, { useState, useEffect } from 'react'
 import PizzaPreview from './PizzaPreview'
 import ToppingMenu from './ToppingMenu'
+import { createUseStyles } from 'react-jss';
+import OrderContext from './Order/Order';
 //import axios from 'axios'
 
-
+let order = {}
 
 export const toppingSelector = React.createContext()
 
@@ -34,11 +36,19 @@ export default function CustomPage() {
 
   useEffect( async ()  => {
     const toppings = await getToppings();
+    const toppingSelector = await toggleObjectCreator(toppings);
+    order = {...toppingSelector}
     setToppings(toppings);
+    setToppingToggler(toppingSelector)
+    console.log("in useEffect", toppingSelector);
   }, []);
 
-  function testFunction(name) {
-
+  function toggleObjectCreator(data) {
+      let result = {}  
+      data.forEach((topping) => {
+       result[topping.name] = false;
+      })
+      return result;
   }
 
   console.log(toppings);
@@ -47,39 +57,40 @@ export default function CustomPage() {
   // needs to accept id or name of topping
   // and update the appropriate topping
 
-  function toggle(name) {
+  // function toggle(name) {
 
-    // let newToppings = {...toppingToggler}
-    let newToppings = JSON.parse(JSON.stringify(toppingToggler));
+  //   // let newToppings = {...toppingToggler}
+  //   let newToppings = JSON.parse(JSON.stringify(toppingToggler));
 
-    // setToppingToggler(!toppingToggler.cheese)
-    // newToppings[name] = !newToppings[name]
-    // setToppingToggler(newToppings);
-    console.log("🤬", newToppings);
+  //   // setToppingToggler(!toppingToggler.cheese)
+  //   // newToppings[name] = !newToppings[name]
+  //   // setToppingToggler(newToppings);
+  //   console.log("🤬", newToppings);
 
-  }
+  // }
 
-  let button
+  // let button
 
-  if (toppingToggler.length) {
-      button = <button onClick={toggle()}> hello</button>;
-    } else {
-      button = <button onClick={toggle("nope")}> nope </button>;
-    }
+  // if (toppingToggler.length) {
+  //     button = <button onClick={toggle()}> hello</button>;
+  //   } else {
+  //     button = <button onClick={toggle("nope")}> nope </button>;
+  //   }
 
 
   return (
-      <div>
       
-        <toppingSelector.Provider value={toppingToggler}>
-          {button}
+      
+        <OrderContext.Provider value={order}>
+          <div>
+          {/* {button} */}
           {/* Should display the image based on the state of toppings */}
           {/* we might have to add z-index of the topping as a style on the element -- maybe based on the id */}
-          <PizzaPreview />
+          <PizzaPreview toppings={toppings}/>
           {/* Should get list of topping available and generate buttons... interacting with toggle function */}
-          <ToppingMenu />
-        </toppingSelector.Provider>
+          <ToppingMenu toppings={toppings} toppingToggler={toppingToggler} />
+          </div>
+       </OrderContext.Provider>
 
-      </div>
   )
 }
