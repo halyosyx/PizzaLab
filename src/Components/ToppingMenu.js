@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Topping from './Topping'
 import './ToppingMenu.css'
-import OrderContext from './Order/Order';
+import {OrderContext} from './Order/Order';
 // const toppings = [
 //   {
 //     name: "Cheese",
@@ -47,39 +47,43 @@ import OrderContext from './Order/Order';
 // "https://i.ibb.co/6g2xtkW/Pie.png"
 
 
-export default function ToppingMenu({toppings, toppingToggler}) {
-    console.log("in Button ♳", toppingToggler);
-    let keys = Object.keys(toppingToggler)
-    let order = useContext(OrderContext);
-    console.log(order);
+export default function ToppingMenu({toppi}) {
+    // console.log("in Button ♳", toppingToggler);
+    // let keys = Object.keys(toppingToggler)
+    // let order = useContext(OrderContext);
+    // console.log(order);
     
-    function toggle(name) {
 
-    // let newToppings = {...toppingToggler}
-    // let newOrderDetails = JSON.parse(JSON.stringify(order));
-    // setToppingToggler(!toppingToggler.cheese)
-    order[name] = !order[name]
-    // setToppingToggler(newToppings);
-    console.log("🤬", order);
 
-  }
+
+  //   function toggle(name) {
+
+  //   // let newToppings = {...toppingToggler}
+  //   // let newOrderDetails = JSON.parse(JSON.stringify(order));
+  //   // setToppingToggler(!toppingToggler.cheese)
+  //   order[name] = !order[name]
+    
+  //   // setToppingToggler(newToppings);
+  //   console.log("🤬", order);
+
+  // }
 
   return (
     <div className="toppingsMenu">
-      {toppings.map(topp => (
+      {toppi.map(topp => (
         
         <Topping 
           key={topp.name} 
-          onClick={() => toggle(topp.name)}
+
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}
         />
 
       ))}
-      {keys.map(name => (
+      {/* {keys.map(name => (
         <button onClick={() => {toggle(name)}}>{name}</button>
-      ))}
+      ))} */}
       
         
 
