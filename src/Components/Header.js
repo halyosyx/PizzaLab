@@ -11,12 +11,14 @@ export default function Header() {
         </Link>
       <ul className="nav-links">
           {/* <li>Home</li> */}
-        <Link to="/custompizza">
+        {/* <Link to="/custompizza">
           <li>Customize pizza</li>
         </Link>
         <Link to="/randompizza">
           <li>Random pizza</li>
-        </Link>
+        </Link> */}
+      {/* BUTTONS NOW WORK ON THE HOME PAGE */}
+
       </ul>
       <Link to="/cart">
       <h5>Cart (0)</h5>
