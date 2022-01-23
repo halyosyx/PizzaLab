@@ -13,7 +13,7 @@ const getToppings = async () => {
 }
 
 
-export const OrderContext = createContext();
+export const OrderContext = createContext({});
 
 export const OrderMaker = props => {
 
@@ -51,7 +51,7 @@ export const OrderMaker = props => {
 
 
   return(
-     <OrderContext.Provider value={[toppings, setToppings]} >
+     <OrderContext.Provider value={{toppings, setToppings}} >
        {props.children}
      </OrderContext.Provider>
   );

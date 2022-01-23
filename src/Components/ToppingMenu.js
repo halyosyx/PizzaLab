@@ -47,7 +47,7 @@ import {OrderContext} from './Order/Order';
 // "https://i.ibb.co/6g2xtkW/Pie.png"
 
 
-export default function ToppingMenu({toppi}) {
+export default function ToppingMenu(props) {
     // console.log("in Button ♳", toppingToggler);
     // let keys = Object.keys(toppingToggler)
     // let order = useContext(OrderContext);
@@ -67,10 +67,12 @@ export default function ToppingMenu({toppi}) {
   //   console.log("🤬", order);
 
   // }
+  const context = useContext(OrderContext);
+  console.log(context);
 
   return (
     <div className="toppingsMenu">
-      {toppi.map(topp => (
+      {context.toppings.map(topp => (
         
         <Topping 
           key={topp.name} 

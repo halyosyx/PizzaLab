@@ -5,8 +5,17 @@
 }
 
 .myPizza img {
-  width: 100%;
+  /* width: 100%; */
   height: auto;
+}
+
+.topping-option {
+  position: relative;
+  /* bottom: 0; */
+}
+
+.pizza-base {
+  position: absolute;
 }
 
 .active {

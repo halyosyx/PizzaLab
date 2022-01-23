@@ -4,7 +4,7 @@ import {toppingSelector} from './CustomePage'
 import {OrderContext} from './Order/Order';
 
 
-export default function PizzaPreview({toppi}) {
+export default function PizzaPreview(props) {
 
   // const order = useContext(OrderContext);
 
@@ -25,19 +25,19 @@ export default function PizzaPreview({toppi}) {
   // });
   
   // const favorite = user.favorites.includes(name);
+  const context = useContext(OrderContext);
 
   return (
    
       <div className="myPizza">
-        <img src="https://i.ibb.co/6g2xtkW/Pie.png" />
-        {/* {toppings.map(topp => (
+        <img src="https://i.ibb.co/6g2xtkW/Pie.png" className="pizza-base"/>
+        {context.toppings.map(topp => (
           // console.log("in 🍕 return", topp.name)
           // console.log("👀",topp.preview_url)
-
-          <img src={topp.preview_url} key={topp.name} className={order[topp.name] ? "active" : "inactive"} style={{zIndex:topp.id}} />
+          <img src={topp.preview_url} key={topp.name} style={{zIndex:topp.id+2}} className="topping-option"/>
         
-        ))} */}
+        ))}
       </div>
-  
+      // className={order[topp.name] ? "active" : "inactive"} 
   )
 }
