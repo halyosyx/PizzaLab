@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <nav className="header">
-      <img src="https://i.ibb.co/WkWN0RW/Pizza-Logo.png" alt="Pizza-Logo" />
-      <ul className="nav-links">
       <Link to="/">
-          <li>Home</li>
+      <img src="https://i.ibb.co/WkWN0RW/Pizza-Logo.png" alt="Pizza-Logo" />
         </Link>
+      <ul className="nav-links">
+          {/* <li>Home</li> */}
         <Link to="/custompizza">
           <li>Customize pizza</li>
         </Link>
@@ -18,7 +18,9 @@ export default function Header() {
           <li>Random pizza</li>
         </Link>
       </ul>
+      <Link to="/cart">
       <h5>Cart (0)</h5>
+      </Link>
     </nav>
   )
 }
