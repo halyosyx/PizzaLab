@@ -18,10 +18,11 @@ export default function CustomPage() {
   // const context = useContext(OrderContext);
   // console.log(context);
   useEffect( async ()  => {
-    console.log("first");
+    // console.log("first");
     const toppings = await getToppings();
-    setToppings(toppings);
-    console.log(toppings);
+    const toppingsWithSelector = toppings.map(v => ({...v, isActive: false}))
+    setToppings(toppingsWithSelector);
+    console.log(toppingsWithSelector);
   }, []);
 
 
