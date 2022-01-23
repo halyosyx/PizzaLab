@@ -34,8 +34,8 @@ export default function PizzaPreview(props) {
         {context.toppings.map(topp => (
           // console.log("in 🍕 return", topp.name)
           // console.log("👀",topp.preview_url)
-          <img src={topp.preview_url} key={topp.name} style={{zIndex:topp.id+2}} className="topping-option"/>
-        
+          <img src={topp.preview_url} key={topp.name} style={{zIndex:topp.id+2}} className="topping-option" className={topp.isActive ? "active" : "inactive"} />
+          
         ))}
       </div>
       // className={order[topp.name] ? "active" : "inactive"} 
