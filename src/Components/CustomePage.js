@@ -15,6 +15,7 @@ const getToppings = async () => {
 export default function CustomPage() {
 
   const [toppings, setToppings] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
 
   // const context = useContext(OrderContext);
   // console.log(context);
@@ -26,7 +27,7 @@ export default function CustomPage() {
     console.log(toppingsWithSelector);
   }, []);
 
-  const context = useContext(CartContext);
+  const cartContext = useContext(CartContext);
 
   return (
       
@@ -50,7 +51,7 @@ export default function CustomPage() {
           <br/>
           <br/>
           <br/>
-          <button onClick={()=>{console.log(context.cart)}}> CL Cart </button>
+          <button onClick={()=>{console.log(cartContext.cart)}} > CL Cart </button>
           {/* <button onClick={()=>{setCart((context.cart) => {...context.cart, yes: "hellow"} ) }> Add to Cart </button> */}
 
 

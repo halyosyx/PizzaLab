@@ -12,7 +12,13 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
 
-  const [cart, setCart] = useState({user:"me"});
+  const [cart, setCart] = useState([
+    {
+      pizza_size_id: 0,
+      toppings_selected_id: [1,2,3],
+      tatal_price: 220
+    }
+  ]);
 
   // function startCart() {
   //   setCart(cart => {...cart, yes: "or no"})

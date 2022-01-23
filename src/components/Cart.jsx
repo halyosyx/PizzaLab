@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect, useContext }  from 'react'
 import "./Cart.css"
+import { CartContext } from './Order/CartOrder';
 
 export default function Cart() {
+
+  const cartContext = useContext(CartContext);
+
+
+
   return (
     <div className="container">
       <div className="cart-content">
 
         <h1> Cart </h1>
+        <div>
+        {cartContext.cart.length === 0 && <h2> Cart Empty </h2>}
+        </div>
+        
+        <br /><br />
+        <button onClick={() => { console.log(cartContext.cart) }} > CL Cart </button>
+        
+        <button onClick={() => { cartContext.setCart(state => ([]))}} > RESET Cart </button>
 
         <div className='item-list'>
           <div className="bar">
