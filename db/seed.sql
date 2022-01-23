@@ -49,7 +49,7 @@ VALUES (
   'Pineapple',
   120,
   'https://i.ibb.co/LSTcQNG/Pineapple-thumb.png',
-  'https://i.ibb.co/LSTcQNG/Pineapple-thumb.png'
+  'https://i.ibb.co/VSNFW54/Pineapple-Preview.png'
 );  
 
 INSERT INTO toppings (name, price, icon_url, preview_url)
