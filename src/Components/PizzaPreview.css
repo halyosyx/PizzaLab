@@ -2,6 +2,8 @@
   width: 65%;
   /* border: 1px solid red; */
   padding: 1em;
+  position: relative;
+
 }
 
 .myPizza img {
@@ -10,7 +12,7 @@
 }
 
 .topping-option {
-  position: relative;
+  position: absolute;
   /* bottom: 0; */
 }
 
