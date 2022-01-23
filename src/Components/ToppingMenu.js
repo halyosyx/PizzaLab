@@ -56,35 +56,42 @@ export default function ToppingMenu(props) {
 
 
 
-  //   function toggle(name) {
-
-  //   // let newToppings = {...toppingToggler}
-  //   // let newOrderDetails = JSON.parse(JSON.stringify(order));
-  //   // setToppingToggler(!toppingToggler.cheese)
-  //   order[name] = !order[name]
+    function toggle(id) {
+    // let newToppings = {...toppingToggler}
+    // let newOrderDetails = JSON.parse(JSON.stringify(order));
+    // setToppingToggler(!toppingToggler.cheese)
+      context.toppings[(id-1)].isActive = !context.toppings[id-1].isActive
+    // order[name] = !order[name]
+    // setToppingToggler(newToppings);
+      console.log("🤬", context.toppings);
+    }
     
-  //   // setToppingToggler(newToppings);
-  //   console.log("🤬", order);
-
-  // }
   const context = useContext(OrderContext);
   console.log(context);
 
   return (
     <div className="toppingsMenu">
       {context.toppings.map(topp => (
-        
+        <div className="toppingsBox">
         <Topping 
+          className="btnImage"
           key={topp.name} 
-
+          // onClick={() => toggle(topp.id) }
+          onClick={() => {console.log("hellow")}}
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}
         />
-
+        <button className="btnOverlay"
+        onClick={() => toggle(topp.id)}>
+        </button>
+        </div>
       ))}
-      {/* {keys.map(name => (
-        <button onClick={() => {toggle(name)}}>{name}</button>
+     {/* {context.toppings.map(topp => (
+      <button 
+        onClick={() => toggle(topp.id)}>
+          {topp.name}<br/> {topp.price}
+      </button>
       ))} */}
       
         
