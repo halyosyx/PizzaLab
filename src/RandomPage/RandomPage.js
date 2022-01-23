@@ -5,6 +5,7 @@ import "./RandomPage.css"
 
 export default function RandomPage(props) {
   const [toppings, setToppings] = useState([]);
+  let count = 0;
 
   const getToppings = async () => {
       const response = await fetch("http://localhost:5000/toppings");
@@ -17,21 +18,23 @@ export default function RandomPage(props) {
     getToppings();
   }, []);
 
+  const selectedToppings = shuffleToppings(toppings)
+  console.log(selectedToppings.slice(0,4));
 
-  const randomizedToppings = randomtoppings(toppings);
+  //If id from randomized topping matches the id for jsonData, insert that data into selected toppings
 
   return (
       <div className="Random_Page">
         <h1>HERE IS YOUR PIZZA!</h1>
         <div className="pizza_image">
             <img className="base"src="https://i.ibb.co/6g2xtkW/Pie.png" />
-            {randomizedToppings.map(topping => (
-              <img key={topping.id} className={topping.name} src={topping.img}/>
+            {selectedToppings.slice(0,4).map(topping => (
+              <img key={topping.id} className={topping.name} src={topping.preview_url}/>
             ))}
         </div>
         <section className="bottom">
         <div className="topping_names">{
-          randomizedToppings.map(topping => (
+          selectedToppings.slice(0,4).map(topping => (
           <div key={topping.id}>{topping.name}</div>))
         }
         </div>
@@ -41,41 +44,11 @@ export default function RandomPage(props) {
   )
 }
 
-// Will refactor at some point
-const randomtoppings = function(listOfToppings){
-
-  let count = 0;
-  let toppingList = {}
-  let resultsArray = [];
-
-  shuffle(listOfToppings);
-
-  for (const toppings of listOfToppings) {
-
-    if (count >= 4) {
-      break;
-    }
-
-    toppingList.name = toppings.name;
-    toppingList.img = toppings.preview_url;
-    toppingList.id = toppings.id;
-
-    resultsArray.push(toppingList);
-    toppingList = {};
-
-    count++;
-  }
-  
-  console.log(resultsArray);
-
-  return resultsArray;
-}
-
-const shuffle = function(toppingsArray)
+const shuffleToppings = function(toppingsArray)
 {
   let currentIndex = toppingsArray.length, randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);

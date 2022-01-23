@@ -11,6 +11,18 @@ app.use(express.json());
 //Generate random toppings
 
 //Handles getting pizza sizes and price
+
+
+
+app.get('/selectedToppings', async (req, res) => {
+    try {
+        const selectedPizzas = await client.query("SELECT * FROM toppings_selected JOIN toppings ON toppings_selected.toppings_id = toppings.id");
+        res.json(selectedPizzas);
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 app.get('/pizzasizes', async (req, res) => {    
     try {
         const pizzaSizes = await client.query("SELECT * FROM pizza_sizes");

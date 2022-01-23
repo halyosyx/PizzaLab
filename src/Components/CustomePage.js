@@ -5,6 +5,7 @@ import ToppingMenu from './ToppingMenu'
 import {OrderContext} from './Order/Order';
 // import {OrderContext} from './Order/Order';
 
+
 const getToppings = async () => {
     const response = await fetch("http://localhost:5000/toppings");
     const jsonData = await response.json();
