@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Topping from './Topping'
 import './ToppingMenu.css'
-import OrderContext from './Order/Order';
+import {OrderContext} from './Order/Order';
 // const toppings = [
 //   {
 //     name: "Cheese",
@@ -47,39 +47,60 @@ import OrderContext from './Order/Order';
 // "https://i.ibb.co/6g2xtkW/Pie.png"
 
 
-export default function ToppingMenu({toppings, toppingToggler}) {
-    console.log("in Button ♳", toppingToggler);
-    let keys = Object.keys(toppingToggler)
-    let order = useContext(OrderContext);
-    console.log(order);
+export default function ToppingMenu(props) {
+    // console.log("in Button ♳", toppingToggler);
+    // let keys = Object.keys(toppingToggler)
+    // let order = useContext(OrderContext);
+    // console.log(order);
     
-    function toggle(name) {
+  const context = useContext(OrderContext);
 
-    // let newToppings = {...toppingToggler}
+  // Option 1 - not setting state <<<<<<<
+    // function toggle(id) {
+    //   context.toppings[(id-1)].isActive = !context.toppings[id-1].isActive
+    //   console.log("🤬", context.toppings);
+    // }
+  // Option 2 - try to set state ??? 
+    function toggle(id) {
+    let index = id - 1;
+    let newToppings = [...context.toppings]
     // let newOrderDetails = JSON.parse(JSON.stringify(order));
     // setToppingToggler(!toppingToggler.cheese)
-    order[name] = !order[name]
-    // setToppingToggler(newToppings);
-    console.log("🤬", order);
-
-  }
+      
+      newToppings[index].isActive = !newToppings[index].isActive
+      console.log("happy", newToppings[index]);
+    // order[name] = !order[name]
+    context.setToppings(newToppings);
+      
+      console.log("🤬", context.toppings);
+    }
+    
+  console.log(context);
 
   return (
     <div className="toppingsMenu">
-      {toppings.map(topp => (
-        
+      {context.toppings.map(topp => (
+        <div className="toppingsBox">
         <Topping 
+          className="btnImage"
           key={topp.name} 
-          onClick={() => toggle(topp.name)}
+          // onClick={() => toggle(topp.id) }
+          // onClick={() => {console.log("hellow")}}
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}
         />
-
+        <button className="btnOverlay"
+        onClick={() => toggle(topp.id)}>
+        </button>
+        </div>
       ))}
-      {keys.map(name => (
-        <button onClick={() => {toggle(name)}}>{name}</button>
-      ))}
+     {/* {context.toppings.map(topp => (
+      <button 
+        onClick={() => toggle(topp.id)}>
+          {topp.name}<br/> {topp.price}
+      </button>
+      ))} */}
       
         
 

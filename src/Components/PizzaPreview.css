@@ -2,17 +2,35 @@
   width: 65%;
   /* border: 1px solid red; */
   padding: 1em;
+  position: relative;
+
 }
 
 .myPizza img {
-  width: 100%;
+  /* width: 100%; */
   height: auto;
 }
 
-.selected {
-  display: block;
+.topping-option {
+  position: absolute;
+  /* bottom: 0; */
 }
 
-.notselected {
-  display: none;
+.pizza-base {
+  position: absolute;
+}
+
+.active {
+  position: absolute;
+
+  display: block;
+  opacity: 1;
+
+}
+
+.inactive {
+  position: absolute;
+
+  opacity: 0;
+  /* display: none; */
 }
