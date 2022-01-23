@@ -53,20 +53,28 @@ export default function ToppingMenu(props) {
     // let order = useContext(OrderContext);
     // console.log(order);
     
+  const context = useContext(OrderContext);
 
-
-
+  // Option 1 - not setting state <<<<<<<
+    // function toggle(id) {
+    //   context.toppings[(id-1)].isActive = !context.toppings[id-1].isActive
+    //   console.log("🤬", context.toppings);
+    // }
+  // Option 2 - try to set state ??? 
     function toggle(id) {
-    // let newToppings = {...toppingToggler}
+    let index = id - 1;
+    let newToppings = [...context.toppings]
     // let newOrderDetails = JSON.parse(JSON.stringify(order));
     // setToppingToggler(!toppingToggler.cheese)
-      context.toppings[(id-1)].isActive = !context.toppings[id-1].isActive
+      
+      newToppings[index].isActive = !newToppings[index].isActive
+      console.log("happy", newToppings[index]);
     // order[name] = !order[name]
-    // setToppingToggler(newToppings);
+    context.setToppings(newToppings);
+      
       console.log("🤬", context.toppings);
     }
     
-  const context = useContext(OrderContext);
   console.log(context);
 
   return (
@@ -77,7 +85,7 @@ export default function ToppingMenu(props) {
           className="btnImage"
           key={topp.name} 
           // onClick={() => toggle(topp.id) }
-          onClick={() => {console.log("hellow")}}
+          // onClick={() => {console.log("hellow")}}
           name={topp.name} 
           icon={topp.icon_url} 
           price={topp.price}

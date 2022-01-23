@@ -21,9 +21,16 @@
 }
 
 .active {
+  position: absolute;
+
   display: block;
+  opacity: 1;
+
 }
 
 .inactive {
-  display: none;
+  position: absolute;
+
+  opacity: 0;
+  /* display: none; */
 }
