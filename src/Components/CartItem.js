@@ -28,9 +28,9 @@ export default function CartItem(props) {
 
   return (
 
-    <div>
+    <div key="cart-item">
         {cartContext.cart.map(item => (
-          <div className="bar">
+          <div className="bar" key={item.pizza_size_id+"itme key"}>
           <p> pizza_size_id: {item.pizza_size_id}</p>
 
           {<p>{item.toppings_selected_names.join(', ')}</p>}

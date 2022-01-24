@@ -60,29 +60,27 @@ export default function Cart() {
           }
 
 
-
-
-          {/* */}
-
           <p id="total">Total: $25</p>
         </div>
 
         <br></br>
 
+
+
         <span className="forms">
-          <label for="name">Full Name: </label>
+          <label name="name">Full Name: </label>
           <input id="name"type="text" placeholder='Name' label="name"></input>
           <br></br>
-          <label for="email">Email: </label>
+          <label name="email">Email: </label>
           <input id="email" type="email" placeholder='Email' label="email"></input>
           <br></br>
-          <label for="address">Address: </label>
+          <label name="address">Address: </label>
           <input id="address" type="text" placeholder='Address' label="address"></input>
           <br></br>
-          <label for="postalcode">Postal Code: </label>
+          <label name="postalcode">Postal Code: </label>
           <input id="postalcode" type="text" placeholder='Postal Code' label="postalcode"></input>
           <br></br>
-          <label for="phonenumber">Phone Number: </label>
+          <label name="phonenumber">Phone Number: </label>
           <input id="phonenumber" type="number" placeholder='Phone Number' label="phonenumber"></input>
         </span>
 
