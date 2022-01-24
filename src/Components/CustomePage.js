@@ -51,7 +51,7 @@ export default function CustomPage() {
           <br/>
           <br/>
           <br/>
-          <button onClick={()=>{console.log(cartContext.cart)}} > CL Cart </button>
+          <button onClick={()=>{console.log(cartContext.cart)}} > Log Cart </button>
           {/* <button onClick={()=>{setCart((context.cart) => {...context.cart, yes: "hellow"} ) }> Add to Cart </button> */}
 
 

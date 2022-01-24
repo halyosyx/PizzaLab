@@ -10,14 +10,14 @@ export default function SelectButton(props) {
     
 
   return (
-  <div className='selectButton'>
+    <div className='selectButton' key={primaryText}>
     <Link to={link}>
 
     <img src={image}/>
     <div className="card__content">
-      <a className="primaryText">{primaryText}</a>
+      <span className="primaryText">{primaryText}</span>
       <br/>
-      <a className="secondaryText">{secondaryText}</a>
+      <span className="secondaryText">{secondaryText}</span>
     </div>
     </Link>
 

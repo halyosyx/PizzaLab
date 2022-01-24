@@ -1,13 +1,34 @@
 import React, { useState, useEffect, useContext }  from 'react'
 import "./Cart.css"
 import { CartContext } from './Order/CartOrder';
+import { OrderContext } from './Order/Order';
+
 import CartItem from './CartItem';
+
+const getToppings = async () => {
+  const response = await fetch("http://localhost:5000/toppings");
+  const jsonData = await response.json();
+  return jsonData;
+}
+
+
 
 export default function Cart() {
 
-  const cartContext = useContext(CartContext);
+  const [toppings, setToppings] = useState([]);
 
-  
+
+  useEffect(async () => {
+    // console.log("first");
+    const toppings = await getToppings();
+    const toppingsWithSelector = toppings.map(v => ({ ...v, isActive: false }))
+    setToppings(toppingsWithSelector);
+    console.log(toppingsWithSelector);
+  }, []);
+
+  const cartContext = useContext(CartContext);
+  const context = useContext(OrderContext);
+
 
   return (
     <div className="container">
@@ -21,7 +42,7 @@ export default function Cart() {
         </div>
         
         <br /><br />
-        <button onClick={() => { console.log(cartContext.cart) }} > CL Cart </button>
+        <button onClick={() => { console.log(cartContext.cart) }} > Log Cart </button>
         
         <button onClick={() => { cartContext.setCart(state => ([]))}} > RESET Cart </button>
 
@@ -35,11 +56,7 @@ export default function Cart() {
           {/* {cartContext.cart.length !== 0 && <CartItem item={item} />} */}
 
           {cartContext.cart.length > 0 &&
-            <h2>
-              You have {cartContext.cart.length} items in Cart.
-            </h2>
-
-
+            <CartItem />
           }
 
 

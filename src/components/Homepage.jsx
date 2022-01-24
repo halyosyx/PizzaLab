@@ -8,6 +8,7 @@ export default function Homepage() {
     <div className="buttons">
 
         <SelectButton
+         
           primaryText="Create your own!"
           secondaryText="Choose your topings"
         link="/custompizza"
@@ -15,15 +16,13 @@ export default function Homepage() {
         />
 
         <SelectButton
+          
           primaryText="Feeling Lucky?"
           secondaryText="Randomly generate your pizza"
         link="/randompizza"
           image="https://i.ibb.co/pyQh8zr/Feeling-Lucky.jpg"
         />
 
-     
- 
-      
     </div>
   )
 }
