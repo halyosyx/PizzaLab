@@ -14,7 +14,6 @@ function App() {
 
   const [cart, setCart] = useState([
     {
-      pizza_size_id: 0,
       toppings_selected_id: [1,2,3],
       toppings_selected_names: ["Cheese", "Tomato", "Pineapple"],
       subtotal: 220
