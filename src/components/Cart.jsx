@@ -13,6 +13,7 @@ const getToppings = async () => {
 
 
 
+
 export default function Cart() {
 
   const [toppings, setToppings] = useState([]);
