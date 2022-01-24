@@ -1,81 +1,74 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import Buttons from './Buttons'
-
+import { OrderContext } from '../Components/Order/Order';
 import "./RandomPage.css"
 
-export default function RandomPage(props) {
+const getToppings = async () => {
+  const response = await fetch("http://localhost:5000/toppings");
+  const jsonData = await response.json();
+  return jsonData
+  
+}
+
+export default function RandomPage() {
   const [toppings, setToppings] = useState([]);
 
-  const getToppings = async () => {
-      const response = await fetch("http://localhost:5000/toppings");
-      const jsonData = await response.json();
-
-      setToppings(jsonData);
-  }
-
-  useEffect(() => {
-    getToppings();
+  useEffect( async () => {
+    const toppings = await getToppings();
+    const toppingSelector = toppings.map(e => ({...e, isActive: false}))
+    setToppings(toppingSelector)
   }, []);
 
-
-  const randomizedToppings = randomtoppings(toppings);
+  const selectedToppings = toggleToppings(toppings).filter(topping => topping.isActive === true);
+  console.log(toppings);
 
   return (
+    <OrderContext.Provider value={{toppings, setToppings}}>
       <div className="Random_Page">
         <h1>HERE IS YOUR PIZZA!</h1>
         <div className="pizza_image">
             <img className="base"src="https://i.ibb.co/6g2xtkW/Pie.png" />
-            {randomizedToppings.map(topping => (
-              <img key={topping.id} className={topping.name} src={topping.img}/>
+            {selectedToppings.map(topping => (
+              <img key={topping.id} className={topping.name} src={topping.preview_url}/>
             ))}
         </div>
         <section className="bottom">
         <div className="topping_names">{
-          randomizedToppings.map(topping => (
-          <div key={topping.id}>{topping.name}</div>))
+          selectedToppings.map(topping => (
+          <div key={topping.id}>{topping.name}</div>
+          ))
         }
         </div>
         <Buttons />
         </section>
     </div>
+    </OrderContext.Provider>
   )
 }
 
-// Will refactor at some point
-const randomtoppings = function(listOfToppings){
-
+const toggleToppings = function(toppings){
+  let shuffledToppings = shuffleToppings(toppings);
   let count = 0;
-  let toppingList = {}
-  let resultsArray = [];
+  
+  for (const topping of shuffledToppings) {
 
-  shuffle(listOfToppings);
-
-  for (const toppings of listOfToppings) {
-
-    if (count >= 4) {
-      break;
+    if (count < 4) {
+      topping.isActive = true;
+    } else {
+      topping.isActive = false;
     }
-
-    toppingList.name = toppings.name;
-    toppingList.img = toppings.preview_url;
-    toppingList.id = toppings.id;
-
-    resultsArray.push(toppingList);
-    toppingList = {};
-
     count++;
   }
-  
-  console.log(resultsArray);
+  return shuffledToppings;
 
-  return resultsArray;
 }
 
-const shuffle = function(toppingsArray)
+
+const shuffleToppings = function(toppingsArray)
 {
   let currentIndex = toppingsArray.length, randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
 
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
