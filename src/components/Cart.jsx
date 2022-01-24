@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext }  from 'react'
 import "./Cart.css"
 import { CartContext } from './Order/CartOrder';
+import CartItem from './CartItem';
 
 export default function Cart() {
 
   const cartContext = useContext(CartContext);
 
-
+  
 
   return (
     <div className="container">
@@ -15,6 +16,8 @@ export default function Cart() {
         <h1> Cart </h1>
         <div>
         {cartContext.cart.length === 0 && <h2> Cart Empty </h2>}
+
+
         </div>
         
         <br /><br />
@@ -22,16 +25,29 @@ export default function Cart() {
         
         <button onClick={() => { cartContext.setCart(state => ([]))}} > RESET Cart </button>
 
-        <div className='item-list'>
-          <div className="bar">
-            <span>Quantity</span>
-            <button> - </button> 1 <button> + </button>
-            <span> Subtotal </span>
-            <span> $25 </span>
-          <button> Remove </button>
-          </div>
 
-        <p id="total">Total: $25</p>
+
+
+        <div className='item-list'>
+        
+          {/* {cartContext.cart.length !== 0 (cartContext.cart.map(item => (<CartItem item={item}/>))} */}
+          {/* {cartContext.cart.length > 0 && <h2>Hellow</h2>} */}
+          {/* {cartContext.cart.length !== 0 && <CartItem item={item} />} */}
+
+          {cartContext.cart.length > 0 &&
+            <h2>
+              You have {cartContext.cart.length} items in Cart.
+            </h2>
+
+
+          }
+
+
+
+
+          {/* */}
+
+          <p id="total">Total: $25</p>
         </div>
 
         <br></br>

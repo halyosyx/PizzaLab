@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect, useContext }  from 'react'
 import "./Header.css"
 import { Link } from 'react-router-dom'
+import { CartContext } from './Order/CartOrder';
+
 
 
 export default function Header() {
+  const cartContext = useContext(CartContext);
+
   return (
     <nav className="header">
       <Link to="/">
@@ -21,7 +25,7 @@ export default function Header() {
 
       </ul>
       <Link to="/cart">
-      <h5>Cart (0)</h5>
+      <h5>Cart ({cartContext.cart.length})</h5>
       </Link>
     </nav>
   )
