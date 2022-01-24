@@ -1,23 +1,25 @@
 import React from 'react'
 import "./SelectButton.scss"
+import { Link } from 'react-router-dom'
 
 export default function SelectButton(props) {
 
-  const {primaryText, secondaryText, image} = props
+  const {primaryText, secondaryText, image, link} = props
 
   
     
 
   return (
-  <div className='selectButton'>
+    <div className='selectButton' key={primaryText}>
+    <Link to={link}>
 
     <img src={image}/>
     <div className="card__content">
-      <a className="primaryText">{primaryText}</a>
+      <span className="primaryText">{primaryText}</span>
       <br/>
-      <a className="secondaryText">{secondaryText}</a>
+      <span className="secondaryText">{secondaryText}</span>
     </div>
-    
+    </Link>
 
   </div>
 

@@ -1,24 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect, useContext }  from 'react'
 import "./Header.css"
 import { Link } from 'react-router-dom'
+import { CartContext } from './Order/CartOrder';
+
 
 
 export default function Header() {
+  const cartContext = useContext(CartContext);
+
   return (
     <nav className="header">
-      <img src="https://i.ibb.co/WkWN0RW/Pizza-Logo.png" alt="Pizza-Logo" />
-      <ul className="nav-links">
       <Link to="/">
-          <li>Home</li>
+      <img src="https://i.ibb.co/WkWN0RW/Pizza-Logo.png" alt="Pizza-Logo" />
         </Link>
-        <Link to="/custompizza">
+      <ul className="nav-links">
+          {/* <li>Home</li> */}
+        {/* <Link to="/custompizza">
           <li>Customize pizza</li>
         </Link>
         <Link to="/randompizza">
           <li>Random pizza</li>
-        </Link>
+        </Link> */}
+      {/* BUTTONS NOW WORK ON THE HOME PAGE */}
+
       </ul>
-      <h5>Cart (0)</h5>
+      <Link to="/cart">
+      <h5>Cart ({cartContext.cart.length})</h5>
+      </Link>
     </nav>
   )
 }

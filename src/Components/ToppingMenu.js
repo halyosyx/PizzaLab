@@ -78,9 +78,9 @@ export default function ToppingMenu(props) {
   console.log(context);
 
   return (
-    <div className="toppingsMenu">
+    <div className="toppingsMenu" key="menu">
       {context.toppings.map(topp => (
-        <div className="toppingsBox">
+        <div className="toppingsBox" key={topp.name}>
         <Topping 
           className="btnImage"
           key={topp.name} 
