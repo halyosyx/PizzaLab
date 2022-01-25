@@ -23,10 +23,10 @@ PizzaLab is a pizza ordering web app that allows hungry customers to order their
 ![]()
 
 ## Wireframes
-![]()
+![](https://github.com/halyosyx/PizzaLab/blob/main/docs/wireframes.png)
 
 ## Database design
-![]()
+![](https://github.com/halyosyx/PizzaLab/blob/main/docs/erd.png)
 
 ## Getting started
 1. Clone this repository.
@@ -39,11 +39,4 @@ PizzaLab is a pizza ordering web app that allows hungry customers to order their
 
 ## Developers Team
 [Christian Aisle Neral](https://github.com/halyosyx/), [Daniel Wajsman](), [Anastassia Tsvetkova](https://github.com/anastassiatsv)
-
-
-
-
-
-
-
 
