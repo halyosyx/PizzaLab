@@ -138,7 +138,7 @@ app.get('/order/:id', async (req, res) => {
 });
 
 // CLOSE XXXXXXX ONE Order NOT WORKING ?!?!?!??!
-app.post('/order_close/:id', async (req, res) => {    
+app.put('/order_close/:id', async (req, res) => {    
     // console.log(req.params);  
 
     try {
