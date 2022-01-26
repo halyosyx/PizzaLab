@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import Topping from './Topping'
 import './ToppingMenu.css'
 import {OrderContext} from './Order/Order';
+import { CartContext } from './Order/CartOrder';
+import { Link } from 'react-router-dom'
 // const toppings = [
 //   {
 //     name: "Cheese",
@@ -52,8 +54,9 @@ export default function ToppingMenu(props) {
     // let keys = Object.keys(toppingToggler)
     // let order = useContext(OrderContext);
     // console.log(order);
-    
+  const {cart,setCart} = useContext(CartContext);
   const context = useContext(OrderContext);
+
 
   // Option 1 - not setting state <<<<<<<
     // function toggle(id) {
@@ -76,6 +79,15 @@ export default function ToppingMenu(props) {
     }
     
   console.log(context);
+  const selectedToppings = context.toppings.filter(topping => topping.isActive === true);
+
+  function changeState() {
+    setCart(prevState => {
+      return [{ toppings_selected_id: selectedToppings.map(topping => topping.id),
+        toppings_selected_names: selectedToppings.map(topping => topping.name),
+        subtotal: 220 }]
+    })
+  }
 
   return (
     <div className="toppingsMenu" key="menu">
@@ -95,6 +107,9 @@ export default function ToppingMenu(props) {
         </button>
         </div>
       ))}
+      <Link to="/cart">
+      <button className="add_to_cart" onClick={() => changeState()}>Add to cart</button>
+      </Link>
      {/* {context.toppings.map(topp => (
       <button 
         onClick={() => toggle(topp.id)}>

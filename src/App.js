@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useContext }  from "react";
-import Homepage from "./Components/Homepage";
+import Homepage from "./components/Homepage";
 import './App.css';
-import Cart from './Components/Cart';
+import Cart from './components/Cart';
 import Header from './Components/Header';
 import CustomPage from './Components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';
@@ -13,13 +13,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
 
-  const [cart, setCart] = useState([
-    {
-      toppings_selected_id: [1,2,3],
-      toppings_selected_names: ["Cheese", "Tomato", "Pineapple"],
-      subtotal: 220
-    }
-  ]);
+  let [cart, setCart] = useState([]);
 
   // function startCart() {
   //   setCart(cart => {...cart, yes: "or no"})

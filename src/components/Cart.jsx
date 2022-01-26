@@ -1,18 +1,15 @@
 import React, { useState, useEffect, useContext }  from 'react'
 import "./Cart.css"
-import { CartContext } from './Order/CartOrder';
-import { OrderContext } from './Order/Order';
+import { CartContext } from '../Components/Order/CartOrder';
+import { OrderContext } from '../Components/Order/Order';
 
-import CartItem from './CartItem';
+import CartItem from '../Components/CartItem';
 
 const getToppings = async () => {
   const response = await fetch("http://localhost:5000/toppings");
   const jsonData = await response.json();
   return jsonData;
 }
-
-
-
 
 export default function Cart() {
 
