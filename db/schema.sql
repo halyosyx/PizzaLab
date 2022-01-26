@@ -1,8 +1,8 @@
 CREATE TABLE users (
 	id serial PRIMARY KEY,
 	name VARCHAR ( 50 ) NOT NULL,
-	email VARCHAR ( 255 ) UNIQUE NOT NULL,
-	phone VARCHAR ( 10 ) NOT NULL,
+	email VARCHAR ( 255 ),
+	phone VARCHAR ( 10 ),
 	created_on TIMESTAMP NOT NULL
 );
 
@@ -15,17 +15,19 @@ CREATE TABLE orders (
 	order_closed TIMESTAMP
 );
 
-CREATE TABLE pizza_sizes (
-	id serial PRIMARY KEY,
-	name VARCHAR ( 50 ) UNIQUE NOT NULL,
-	price INT NOT NULL
-);
+-- NOT USED
+-- CREATE TABLE pizza_sizes (
+-- 	id serial PRIMARY KEY,
+-- 	name VARCHAR ( 50 ) UNIQUE NOT NULL,
+-- 	price INT NOT NULL
+-- );
+-- NOT USED
 
 
 
 CREATE TABLE ordered_items (
 	id serial PRIMARY KEY,
-	pizza_sizes_id INTEGER REFERENCES pizza_sizes (id) ON DELETE CASCADE,
+	-- pizza_sizes_id INTEGER REFERENCES pizza_sizes (id) ON DELETE CASCADE,
 	orders_id INTEGER REFERENCES orders (id) ON DELETE CASCADE
 );
 
