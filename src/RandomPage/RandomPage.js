@@ -16,7 +16,7 @@ const getToppings = async () => {
 export default function RandomPage() {
   const [toppings, setToppings] = useState([]);
   const {cart, setCart} = useContext(CartContext);
-  const selectedToppings = toggleToppings(toppings).filter(topping => topping.isActive === true);
+  const selectedToppings = toggleToppings(toppings);
   
   useEffect( async () => {
     const toppings = await getToppings();
@@ -32,14 +32,14 @@ export default function RandomPage() {
     return result;
   }
 
-  
-
   function addPizza() {
     setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
         toppings_selected_names: selectedToppings.map(topping => topping.name),
         subtotal: sumTotal(selectedToppings)}]);
-  };
-
+    localStorage.setItem('toppings_selected_id',selectedToppings.map(topping => topping.id));
+    localStorage.setItem('toppings_selected_names',selectedToppings.map(topping => topping.name));
+    localStorage.setItem('subtotal',sumTotal(selectedToppings));
+  }
 
   return (
     <CartContext.Provider value={null}>
@@ -59,7 +59,7 @@ export default function RandomPage() {
         }
         </div>
         <div className="randomize">
-            <button onClick={() => null}>Randomize</button>
+            <button onClick={() => window.location.reload(false)}>Randomize</button>
         </div>
         <div className="addtocart">
           <Link to="/cart">
@@ -87,7 +87,7 @@ const toggleToppings = function(toppings){
     count++;
   }
   
-  return shuffledToppings;
+  return shuffledToppings.filter(topping => topping.isActive === true);
 
 }
 
