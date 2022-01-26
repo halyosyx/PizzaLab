@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect, useContext }  from "react";
-import Homepage from "./components/Homepage";
+import Homepage from "./Components/Homepage";
 import './App.css';
-import Cart from './components/Cart';
+import Cart from './Components/Cart';
 import Header from './Components/Header';
 import CustomPage from './Components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';
+import Admin from './Admin/Admin';
+
 import {CartContext} from './Components/Order/CartOrder';
 
 
@@ -35,6 +37,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/custompizza" element={<CustomPage />} />
           <Route path="/randompizza" element={<RandomPage />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/cart" element={<Cart />} />
 
         </Routes>
