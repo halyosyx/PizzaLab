@@ -84,7 +84,15 @@ export default function ToppingMenu(props) {
   function addPizza() {
     setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
         toppings_selected_names: selectedToppings.map(topping => topping.name),
-        subtotal: 220 }])
+        subtotal: sumTotal(selectedToppings) }])
+  }
+
+  function sumTotal(toppings) {
+    let result = 0;
+    for (const topping of toppings) {
+      result += topping.price;
+    }
+    return result;
   }
 
   return (

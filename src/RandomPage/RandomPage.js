@@ -25,14 +25,14 @@ export default function RandomPage() {
   }, []);
 
   function sumTotal(toppings) {
-    let result;
+    let result = 0;
     for (const topping of toppings) {
-      result += topping.price
+      result += topping.price;
     }
     return result;
   }
 
-  console.log(sumTotal(selectedToppings));
+  
 
   function addPizza() {
     setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
