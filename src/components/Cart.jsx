@@ -27,18 +27,28 @@ export default function Cart() {
   const cartContext = useContext(CartContext);
   const context = useContext(OrderContext);
 
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phonenumber, setPhonenumber] = useState('');
+  const [mytotal, setMyTotal] = useState(10);
+
   const onSubmitForm = async e => {
     e.preventDefault()
     try {
-      const body = cartContext.cart;
+      const pizzas = cartContext.cart;
+      const body = { name: name, email: email, phone: phonenumber, pizzas: pizzas, total: mytotal };
+    
+      console.log("Before POST",JSON.stringify(body));
       const res = await fetch("http://localhost:5000/order", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: body
-        
+        body: JSON.stringify(body)
+         
       });
+      console.log("After POST");
+      cartContext.setCart([])
       console.log(res);
-    } catch (err) {
+       } catch (err) {
       console.log(err.message);
     }
     
@@ -48,9 +58,12 @@ export default function Cart() {
     let result = 0;
     for (const cart of carts) {
       result += cart.subtotal;
+      console.log(result);
     }
+
     return result
   }
+
 
 
   return (
@@ -58,50 +71,81 @@ export default function Cart() {
       <div className="cart-content">
 
         <h1> Cart </h1>
-        <div>
-        {cartContext.cart.length === 0 && <h2> Cart Empty </h2>}
 
-
+        <div className="sub-container">
+          {cartContext.cart.length === 0 && <h2> Cart Empty </h2>}
         </div>
         
-        <br /><br />
-        <button onClick={() => { console.log(cartContext.cart) }} > Log Cart </button>
-        
-        <button onClick={() => { cartContext.setCart(state => ([]))}} > RESET Cart </button>
-        <form className="post" onSubmit={onSubmitForm}>
-        <div className='item-list'>
-        
-          {/* {cartContext.cart.length !== 0 (cartContext.cart.map(item => (<CartItem item={item}/>))} */}
-          {/* {cartContext.cart.length > 0 && <h2>Hellow</h2>} */}
-          {/* {cartContext.cart.length !== 0 && <CartItem item={item} />} */}
+        <div className="sub-container">
 
-          {cartContext.cart.length > 0 &&
-            <CartItem />
-          }
-
-
-          <p id="total">Total: ${(total(cartContext.cart) / 100).toFixed(2)}</p>
+          <button onClick={() => { console.log(cartContext.cart) }} > Log Cart </button>
+          <button onClick={() => { cartContext.setCart(state => ([])) }} > RESET Cart </button>
         </div>
 
-        <br></br>
-        
-        <span className="forms">
-          <label name="name">Full Name: </label>
-          <input id="name"type="text" placeholder='Name' label="name"></input>
+
+          <form className="post" onSubmit={onSubmitForm}>
+            <div className='item-list'>
+          
+            {/* {cartContext.cart.length !== 0 (cartContext.cart.map(item => (<CartItem item={item}/>))} */}
+            {/* {cartContext.cart.length > 0 && <h2>Hellow</h2>} */}
+            {/* {cartContext.cart.length !== 0 && <CartItem item={item} />} */}
+
+            {cartContext.cart.length > 0 &&
+              <CartItem />
+            }
+
+
+            <p id="total" className="total">Total: ${(total(cartContext.cart) / 100).toFixed(2)}</p>
+          </div>
+
+
+          
+          <div className="forms">
+
+            <div className="form-box">
+              <label name="name">Full Name: </label>
+              <input 
+                id="name"
+                type="text" 
+                placeholder='Name' 
+                label="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+
+
+            <div className="form-box">
+              <label name="email">Email: </label>
+              <input 
+                id="email" 
+                type="email" 
+                placeholder='Email' 
+                label="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="form-box">
+              <label name="phonenumber">Phone Number: </label>
+              <input 
+                id="phonenumber" 
+                type="number" 
+                placeholder='Phone Number' 
+                label="phonenumber"
+                value={phonenumber}
+                onChange={(e) => setPhonenumber(e.target.value)}
+              />
+            </div>
+          </div>
+
           <br></br>
-          <label name="email">Email: </label>
-          <input id="email" type="email" placeholder='Email' label="email"></input>
           <br></br>
-          <label name="phonenumber">Phone Number: </label>
-          <input id="phonenumber" type="number" placeholder='Phone Number' label="phonenumber"></input>
-        </span>
 
-        <br></br>
-        <br></br>
-
-        <div>
-          <button> Checkout</button>
-        </div>
+          <div className="checkout">
+            <button id="checkout"> Checkout</button>
+          </div>
         </form>
       </div>
     </div>
