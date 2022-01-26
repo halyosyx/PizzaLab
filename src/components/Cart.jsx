@@ -43,6 +43,16 @@ export default function Cart() {
     }
     
   }
+
+  const total = function (carts){
+    let result = 0;
+    for (const cart of carts) {
+      result += cart.subtotal;
+    }
+    return result
+  }
+
+
   return (
     <div className="container">
       <div className="cart-content">
@@ -70,7 +80,7 @@ export default function Cart() {
           }
 
 
-          <p id="total">Total: $25</p>
+          <p id="total">Total: ${(total(cartContext.cart) / 100).toFixed(2)}</p>
         </div>
 
         <br></br>
