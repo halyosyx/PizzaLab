@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useContext }  from "react";
-import Homepage from "./Components/Homepage";
+import Homepage from "./components/Homepage";
 import './App.css';
-import Cart from './Components/Cart';
+import Cart from './components/Cart';
 import Header from './Components/Header';
 import CustomPage from './Components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';

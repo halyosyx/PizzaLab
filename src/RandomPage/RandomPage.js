@@ -24,10 +24,20 @@ export default function RandomPage() {
     setToppings(toppingSelector)
   }, []);
 
+  function sumTotal(toppings) {
+    let result;
+    for (const topping of toppings) {
+      result += topping.price
+    }
+    return result;
+  }
+
+  console.log(sumTotal(selectedToppings));
+
   function addPizza() {
     setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
         toppings_selected_names: selectedToppings.map(topping => topping.name),
-        subtotal: 220 }]);
+        subtotal: sumTotal(selectedToppings)}]);
   };
 
 

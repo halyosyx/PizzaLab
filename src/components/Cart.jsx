@@ -27,7 +27,6 @@ export default function Cart() {
   const cartContext = useContext(CartContext);
   const context = useContext(OrderContext);
 
-
   const onSubmitForm = async e => {
     e.preventDefault()
     try {
