@@ -147,7 +147,6 @@ app.post('/order', async (req, res) => {
             "INSERT INTO orders (user_id, total, order_created) VALUES ($1, $2, 'now') RETURNING id AS order_id;",
         [userId, req.body.total]
         );
-
         const orderId = newOrder.rows[0].order_id
         for ( const pizza of req.body.pizzas ) { 
             const newPizza = await client.query(
@@ -164,11 +163,7 @@ app.post('/order', async (req, res) => {
             }
 
         }  
-
-        // req.body.pizzas.forEach( async (pizza) => {
-        
-        // };
-        // res.json(newOrder.rows);
+        res.json(newOrder.rows[0].order_id);
         console.log(newOrder.rows[0]);
     } catch (err) {
         console.error(err);
