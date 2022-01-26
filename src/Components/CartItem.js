@@ -28,14 +28,14 @@ export default function CartItem(props) {
 
   return (
 
-    <div key="cart-item">
+    <div key="cart-item" className="bar-list-item">
         {cartContext.cart.map(item => (
           <div className="bar" key={item.pizza_size_id+"itme key"}>
 
-          {<p>{item.toppings_selected_names.join(', ')}</p>}
+          <p><b>Toppings Selected: </b></p>  {<p>{item.toppings_selected_names.join(', ')}</p>}
         
-          <span> Subtotal </span>
-          <span> ${(item.subtotal / 100).toFixed(2)}</span>
+          <p><b> Subtotal </b></p>
+          <p> ${(item.subtotal / 100).toFixed(2)}</p>
           <button> Remove </button>
         </div>
 
