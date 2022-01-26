@@ -81,12 +81,10 @@ export default function ToppingMenu(props) {
   console.log(context);
   const selectedToppings = context.toppings.filter(topping => topping.isActive === true);
 
-  function changeState() {
-    setCart(prevState => {
-      return [{ toppings_selected_id: selectedToppings.map(topping => topping.id),
+  function addPizza() {
+    setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
         toppings_selected_names: selectedToppings.map(topping => topping.name),
-        subtotal: 220 }]
-    })
+        subtotal: 220 }])
   }
 
   return (
@@ -108,7 +106,7 @@ export default function ToppingMenu(props) {
         </div>
       ))}
       <Link to="/cart">
-      <button className="add_to_cart" onClick={() => changeState()}>Add to cart</button>
+      <button className="add_to_cart" onClick={() => addPizza()}>Add to cart</button>
       </Link>
      {/* {context.toppings.map(topp => (
       <button 

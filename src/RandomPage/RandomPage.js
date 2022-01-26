@@ -17,7 +17,6 @@ export default function RandomPage() {
   const [toppings, setToppings] = useState([]);
   const {cart, setCart} = useContext(CartContext);
   const selectedToppings = toggleToppings(toppings).filter(topping => topping.isActive === true);
-  console.log(selectedToppings);
   
   useEffect( async () => {
     const toppings = await getToppings();
@@ -25,13 +24,12 @@ export default function RandomPage() {
     setToppings(toppingSelector)
   }, []);
 
-  function changeState() {
-    setCart(prevState => {
-      return [{ toppings_selected_id: selectedToppings.map(topping => topping.id),
+  function addPizza() {
+    setCart([...cart, { toppings_selected_id: selectedToppings.map(topping => topping.id),
         toppings_selected_names: selectedToppings.map(topping => topping.name),
-        subtotal: 220 }]
-    });
+        subtotal: 220 }]);
   };
+
 
   return (
     <CartContext.Provider value={null}>
@@ -51,11 +49,11 @@ export default function RandomPage() {
         }
         </div>
         <div className="randomize">
-            <button onClick={() => console.log('randomize')}>Randomize</button>
+            <button onClick={() => null}>Randomize</button>
         </div>
         <div className="addtocart">
           <Link to="/cart">
-            <button onClick={() => changeState()}>Add to cart</button>
+            <button onClick={() => addPizza()}>Add to cart</button>
           </Link>
         </div>
         </section>
@@ -78,6 +76,7 @@ const toggleToppings = function(toppings){
     }
     count++;
   }
+  
   return shuffledToppings;
 
 }
