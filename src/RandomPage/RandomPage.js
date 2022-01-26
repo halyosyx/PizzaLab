@@ -2,6 +2,9 @@ import React, {useEffect, useState, useContext} from 'react'
 import Buttons from './Buttons'
 import { OrderContext } from '../Components/Order/Order';
 import "./RandomPage.css"
+import "./Buttons.css"
+import { Link } from 'react-router-dom'
+import { CartContext } from '../Components/Order/CartOrder';
 
 const getToppings = async () => {
   const response = await fetch("http://localhost:5000/toppings");
@@ -12,18 +15,26 @@ const getToppings = async () => {
 
 export default function RandomPage() {
   const [toppings, setToppings] = useState([]);
-
+  const {cart, setCart} = useContext(CartContext);
+  const selectedToppings = toggleToppings(toppings).filter(topping => topping.isActive === true);
+  console.log(selectedToppings);
+  
   useEffect( async () => {
     const toppings = await getToppings();
     const toppingSelector = toppings.map(e => ({...e, isActive: false}))
     setToppings(toppingSelector)
   }, []);
 
-  const selectedToppings = toggleToppings(toppings).filter(topping => topping.isActive === true);
-  console.log(toppings);
+  function changeState() {
+    setCart(prevState => {
+      return [{ toppings_selected_id: selectedToppings.map(topping => topping.id),
+        toppings_selected_names: selectedToppings.map(topping => topping.name),
+        subtotal: 220 }]
+    });
+  };
 
   return (
-    <OrderContext.Provider value={{toppings, setToppings}}>
+    <CartContext.Provider value={null}>
       <div className="Random_Page">
         <h1>HERE IS YOUR PIZZA!</h1>
         <div className="pizza_image">
@@ -39,12 +50,20 @@ export default function RandomPage() {
           ))
         }
         </div>
-        <Buttons />
+        <div className="randomize">
+            <button onClick={() => console.log('randomize')}>Randomize</button>
+        </div>
+        <div className="addtocart">
+          <Link to="/cart">
+            <button onClick={() => changeState()}>Add to cart</button>
+          </Link>
+        </div>
         </section>
     </div>
-    </OrderContext.Provider>
+    </CartContext.Provider>
   )
 }
+
 
 const toggleToppings = function(toppings){
   let shuffledToppings = shuffleToppings(toppings);
