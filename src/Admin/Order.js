@@ -1,7 +1,7 @@
 import React from 'react';
 import './Order.css';
 import User from './User';
-// import OrderedItems from './OrderedItems';
+import OrderedItems from './OrderedItems';
 
 
 export default function Order(props) {
@@ -10,7 +10,7 @@ export default function Order(props) {
       <h2>Order #{props.id}</h2>
       <h3>User Information</h3>
       <User id={props.id} users={props.user_info}/>   
-      {/* <OrderedItems id={props.id} /> */}
+      <OrderedItems id={props.id} />
     </div>
 
 
