@@ -87,7 +87,7 @@ app.post('/users', async (req, res) => {
 //Handles getting the ORDERS
 app.get('/orders', async (req, res) => {    
     try {
-        const orders = await client.query("SELECT * FROM orders");
+        const orders = await client.query("SELECT * FROM orders ORDER BY id DESC");
         res.json(orders.rows);
         
     } catch (err) {
