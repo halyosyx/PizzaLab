@@ -87,7 +87,7 @@ app.post('/users', async (req, res) => {
 //Handles getting the ORDERS
 app.get('/orders', async (req, res) => {    
     try {
-        const orders = await client.query("SELECT * FROM orders");
+        const orders = await client.query("SELECT * FROM orders ORDER BY id DESC");
         res.json(orders.rows);
         
     } catch (err) {
@@ -125,12 +125,12 @@ app.get('/orders', async (req, res) => {
 
 //Handles getting the ONE Order
 app.get('/order/:id', async (req, res) => {    
-    console.log(req.params);  
+    // console.log(req.params);  
 
     try {
         const order = await client.query("SELECT * FROM orders WHERE id = ($1) ;", [req.params.id]);
         res.json(order.rows); 
-        console.log(order.rows[0].user_id);
+        // console.log(order.rows[0].user_id);
         
     } catch (err) {
         console.error(err);
@@ -144,7 +144,7 @@ app.put('/order_close/:id', async (req, res) => {
     try {
         const cancel_order = await client.query("UPDATE orders SET order_closed = ($1) WHERE id = ($2) RETURNING *;", ['now', req.params.id]);
         res.json(cancel_order.rows); 
-        console.log(cancel_order.rows);
+        // console.log(cancel_order.rows);
         
     } catch (err) {
         console.error(err);
@@ -154,7 +154,7 @@ app.put('/order_close/:id', async (req, res) => {
 
 //Handles getting Items in One Order
 app.get('/order_list/:id', async (req, res) => {    
-    console.log(req.params);  
+    // console.log(req.params);  
 
     try {
         const order_list = await client.query("SELECT * FROM ordered_items WHERE orders_id = ($1);", [req.params.id]);
@@ -168,11 +168,11 @@ app.get('/order_list/:id', async (req, res) => {
 
 //Handles getting USER in One Order
 app.get('/order_user/:id', async (req, res) => {    
-    console.log(req.params);  
+    // console.log(req.params);  
 
     try {
         const orderUserInfo = await client.query("SELECT user_id FROM orders WHERE id = ($1);", [req.params.id]);
-        console.log(orderUserInfo.rows[0].user_id);
+        // console.log(orderUserInfo.rows[0].user_id);
         const users = await client.query("SELECT * FROM users WHERE id = $1", [orderUserInfo.rows[0].user_id]);
         res.json(users.rows[0]);
   
@@ -202,7 +202,7 @@ app.get('/pizza_id/:id', async (req, res) => {
 
 //Handles getting Toppings NAMES for one Pizza
 app.get('/pizza_name/:id', async (req, res) => {    
-    console.log(req.params);  
+    // console.log(req.params);  
 
     try {
         const pizza_name = await client.query("SELECT (toppings_id) FROM toppings_selected WHERE ordered_items_id = ($1);", [req.params.id]);
@@ -210,11 +210,11 @@ app.get('/pizza_name/:id', async (req, res) => {
 
         for ( const topping of pizza_name.rows) {
             let topping_id = topping.toppings_id;
-            console.log(topping_id);
+            // console.log(topping_id);
 
             const topping_name = await client.query("SELECT name FROM toppings WHERE id = ($1);", [topping_id]);
 
-            console.log(topping_name.rows);
+            // console.log(topping_name.rows);
             pizza_toppings_names.push(topping_name.rows[0].name)
         }
         res.json(pizza_toppings_names);
@@ -233,7 +233,7 @@ app.get('/pizza_name/:id', async (req, res) => {
 
 
 app.post('/order', async (req, res) => {
-    console.log(req.params);  
+    // console.log(req.params);  
     try {
         const newUser = await client.query(
             "INSERT INTO users (name, email, phone, created_on) VALUES ($1, $2, $3, 'now') RETURNING id AS user_id;",
@@ -261,7 +261,7 @@ app.post('/order', async (req, res) => {
 
         }  
         res.json(newOrder.rows[0].order_id);
-        console.log(newOrder.rows[0]);
+        // console.log(newOrder.rows[0]);
     } catch (err) {
         console.error(err);
     }

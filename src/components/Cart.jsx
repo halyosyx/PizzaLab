@@ -48,6 +48,7 @@ export default function Cart() {
       console.log("After POST");
       cartContext.setCart([])
       console.log(res);
+      window.location.replace("/CartTY")
        } catch (err) {
       console.log(err.message);
     }

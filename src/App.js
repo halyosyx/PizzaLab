@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import CustomPage from './Components/CustomePage';
 import RandomPage from './RandomPage/RandomPage';
 import Admin from './Admin/Admin';
+import CartThankYou from './Components/CartThankYou';
 
 import {CartContext} from './Components/Order/CartOrder';
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/randompizza" element={<RandomPage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cartTY" element={<CartThankYou />} />
 
         </Routes>
       </Router>
